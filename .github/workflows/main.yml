@@ -19,3 +19,7 @@ jobs:
         with:
           name: Ali-Sher-Printer-APK
           path: bin/*.apk
+      - name: Build with Buildozer
+        run: |
+          docker run --rm -v ${{ github.workspace }}:/home/user/hostdir \
+          kivy/buildozer:latest /bin/bash -c "yes | buildozer android debug"
