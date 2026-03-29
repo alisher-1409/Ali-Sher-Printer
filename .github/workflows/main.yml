@@ -1,5 +1,5 @@
 name: Build APK
-on: [push] # Jab bhi aap koi tabdeeli karenge, build khud shuru ho jayegi
+on: [push]
 
 jobs:
   build:
@@ -9,13 +9,12 @@ jobs:
 
       - name: Build with Buildozer
         uses: ArtemSerebrennkov/buildozer-action@v1
-        id: buildozer
         with:
           command: buildozer android debug
           repository_root: .
 
-      - name: Upload APK artifact
-        uses: actions/upload-artifact@v2
+      - name: Upload APK
+        uses: actions/upload-artifact@v3
         with:
           name: Ali-Sher-Printer-APK
           path: bin/*.apk
