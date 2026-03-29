@@ -9,7 +9,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Build with Buildozer
-        # Is line mein hum 'yes' auto-reply kar rahe hain
+        # 'yes |' lagane se [y/n] wale sawal khud hal ho jayenge
         run: |
           docker run --rm -v ${{ github.workspace }}:/home/user/hostdir \
           kivy/buildozer:latest /bin/bash -c "yes | buildozer android debug"
