@@ -9,10 +9,12 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Build with Buildozer
-        uses: NiklasPlessing/buildozer-action@v1
-        with:
-          command: buildozer android debug
-          repository_root: .
+        # Hum direct docker image istemal karenge jo Google Colab ki tarah kaam karti hai
+        run: |
+          docker run --rm -v ${{ github.workspace }}:/home/user/hostdir \
+          kivy/buildozer:latest --version && \
+          docker run --rm -v ${{ github.workspace }}:/home/user/hostdir \
+          kivy/buildozer:latest android debug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
